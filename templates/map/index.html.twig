@@ -1,10 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="p-3 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 fw-normal">Žemėlapis</h1>
-        <p class="fs-5 text-muted">Žemėlapio puslapis.</p>
-    </div>
+    <div id="map" style="width: 1004px; height: 590px"></div>
+    <script type="text/javascript">
+        var map = new L.Map('map');
+
+        var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            osmAttrib = 'Map data &copy; 2016 OpenStreetMap contributors',
+            osm = new L.TileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib});
+
+        map.setView(new L.LatLng(0, 0), 13).addLayer(osm);
+
+        var marker = L.marker([54.90820771704568, 23.958540403472753]).addTo(map);
+
+        marker.bindPopup("<b>Marker test.</b>").openPopup();
+
+        var popup = L.popup();
+
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(map);
+        }
+
+        map.on('click', onMapClick);
+    </script>
 {% endblock %}
 
 
