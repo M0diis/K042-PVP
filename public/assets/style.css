@@ -10000,7 +10000,8 @@ tbody.collapse.show {
     display: block;
     padding: 0.5rem 1rem; }
 .nav-link:hover, .nav-link:focus {
-    text-decoration: none; }
+    text-decoration: none;
+}
 .nav-link.disabled {
     color: #6c757d; }
 
@@ -16622,9 +16623,7 @@ i.mdi.mdi-arrow-right.icon-lg {
     font-size: 21px;
     padding: 15px;
 }*/
-#aktyvi {
-    color: #ffaf00;
-}
+
 .mdi-menu {
     color: #000;
 }
