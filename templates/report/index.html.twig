@@ -4,10 +4,27 @@
     <div class="main-panel">
         <div class="container">
             <div class="row sm-3 align-items-center">
+
+                {% if messages|default(null) %}
+                    <div class="alert alert-success" role="alert">
+                        {% for msg in messages %}
+                            {{ msg }} <br>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if errors|default(null) %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for err in errors %}
+                            {{ err }} <br>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
                 <form method="post" action="/report/submit">
                     <div class="form-control-sm">
-                        <label for="username">Vardas</label>
-                        <input type="text" class="form-control" name="username" id="username">
+                        <label for="name">Vardas</label>
+                        <input type="text" class="form-control" name="name" id="name">
                     </div>
                     <div class="form-control-sm">
                         <label for="phone">Telefono nr.</label>
@@ -19,7 +36,7 @@
                     </div>
                     <div class="form-control-sm">
                         <label for="address">Vietos adresas</label>
-                        <input type="password" class="form-control" name="address" id="address">
+                        <input type="text" class="form-control" name="address" id="address">
                     </div>
                     <button type="submit" class="btn btn-success">Pranešti</button>
                 </form>

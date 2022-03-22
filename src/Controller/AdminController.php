@@ -54,9 +54,7 @@ class AdminController extends AbstractController
      */
     public function main(): Response
     {
-        return $this->render('admin/main.html.twig', [
-
-        ]);
+        return $this->render('admin/main.html.twig');
     }
 
     /**
@@ -64,8 +62,6 @@ class AdminController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('admin/index.html.twig', [
-
-        ]);
+        return $this->render('admin/index.html.twig');
     }
 }

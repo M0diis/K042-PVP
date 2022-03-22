@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="map" style="width: 1004px; height: 590px"></div>
+    <div id="map" style="width: 100vh; height: 100vh;"></div>
     <script type="text/javascript">
         var map = new L.Map('map');
 
@@ -9,7 +9,7 @@
             osmAttrib = 'Map data &copy; 2016 OpenStreetMap contributors',
             osm = new L.TileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib});
 
-        map.setView(new L.LatLng(0, 0), 13).addLayer(osm);
+        map.setView(new L.LatLng(54.914317, 23.91243), 13).addLayer(osm);
 
         var marker = L.marker([54.90820771704568, 23.958540403472753]).addTo(map);
 
