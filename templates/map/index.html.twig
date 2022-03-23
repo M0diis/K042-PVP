@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="map" style="width: 397vh; height: 100vh;"></div>
+    <div id="map" style="height: 100vh;"></div>
     <script type="text/javascript">
         var map = new L.Map('map');
 
         var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            osmAttrib = 'Map data &copy; 2016 OpenStreetMap contributors',
+            osmAttrib = 'Map data &copy; 2022 OpenStreetMap contributors (https://www.openstreetmap.org/copyright)',
             osm = new L.TileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib});
 
         map.setView(new L.LatLng(54.911824, 23.923679), 13).addLayer(osm);
@@ -18,8 +18,7 @@
         var popup = L.popup();
 
         function onMapClick(e) {
-            popup
-                .setLatLng(e.latlng)
+            popup.setLatLng(e.latlng)
                 .setContent("You clicked the map at " + e.latlng.toString())
                 .openOn(map);
         }
