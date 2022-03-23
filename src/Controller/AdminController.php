@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use mysqli;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,14 +13,14 @@ class AdminController extends AbstractController
 {
     private mysqli $conn;
 
-    public function __construct()
+    public function __construct(ParameterBagInterface $params)
     {
-        $hostname = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "users";
-
-        $this->conn = new mysqli($hostname, $username, $password, $database);
+        $this->conn = new mysqli(
+            $params->get('database_host'),
+            $params->get('database_user'),
+            $params->get('database_password'),
+            $params->get('database_name')
+        );
 
         if ($this->conn->connect_error)
         {
