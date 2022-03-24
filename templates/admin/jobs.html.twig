@@ -1,0 +1,99 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block body %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">ATLIEKAMI DARBAI</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>
+                            Duobės ID
+                        </th>
+                        <th>
+                            Darbų pradžia
+                        </th>
+                        <th>
+                            Darbų pabaiga
+                        </th>
+                        <th>
+                            Darbų kaina
+                        </th>
+                        <th>
+                            Adresas
+                        </th>
+                        <th>
+                            Peržiūra
+                        </th>
+                        <th>
+                            Redagavimas
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if jobs|default(null) %}
+                        {% for job in jobs %}
+                            <tr>
+                                <td class="font-weight-medium">
+                                    {{ job.work_info_id }}
+                                </td>
+                                <td>
+                                    {{ job.work_start }}
+                                </td>
+                                </td>
+                                <td>
+                                    {{ job.work_end }}
+                                </td>
+                                <td>
+                                    {{ job.price }}
+                                </td>
+                                <td id="address">
+
+                                </td>
+                                <script>
+                                    var geocodeService = L.esri.Geocoding.geocodeService({
+                                        apikey: "{{ geocode_api_key }}"
+                                    });
+
+                                    var latLng = L.latLng({{ job.lat }}, {{ job.long }});
+
+                                    var address;
+
+                                    geocodeService.reverse().latlng(latLng).run(function (error, result) {
+                                        if (error) {
+                                            return;
+                                        }
+
+                                        var el = document.getElementById("address");
+                                        el.innerHTML = result.address.LongLabel;
+                                        el.id = "";
+                                    });
+                                </script>
+
+                                <td>
+                                    <a class="small-text" href="/map/pan/{{ job.lat }}/{{ job.long }}" target="_blank">
+                                        Peržiūrėti žemėlapyje
+                                </td>
+
+                                <td>
+                                    <a class="small-text" href="/admin/edit/job/{{ job.work_info_id }}" target="_blank">
+                                        Redaguoti
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+
+{% block navigation %}
+    {{ parent() }}
+{% endblock %}
+

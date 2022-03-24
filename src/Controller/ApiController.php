@@ -6,6 +6,7 @@ use PDO;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,6 +27,61 @@ class ApiController extends AbstractController
     }
 
     /**
+     * @Route("/api/v1/getimage/{id}.png", name="getimage", methods={"GET", "HEAD"})
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function getImage(Request $request): Response
+    {
+        $id = $request->attributes->get('id');
+
+        $stmt = $this->pdo->prepare("SELECT encode(data, 'base64') as base64 FROM \"Images\" WHERE image_id = :id");
+
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        $base64 = $stmt->fetch(PDO::FETCH_ASSOC)['base64'];
+
+        if (!$base64)
+        {
+            return new Response('', Response::HTTP_NOT_FOUND);
+        }
+
+        $image = base64_decode($base64);
+        $image = base64_decode($image);
+
+        $response = new Response($image);
+        $response->headers->set('Content-Type', 'image/png');
+
+        return $response;
+    }
+
+    /**
+     * @Route("/api/v1/get/{id}", name="getloc", methods={"GET", "HEAD"})
+     *
+     * @param int $id The id of the location to get
+     *
+     * @return Response
+     */
+    public function getLocation(Request $request): Response
+    {
+        $id = $request->attributes->get('id');
+
+        $stmt = $this->pdo->prepare("SELECT * FROM \"Locations\" WHERE location_id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            return new Response(json_encode($result), 200);
+        } else {
+            return new Response(json_encode(['error' => 'Location not found']), 404);
+        }
+    }
+
+    /**
      * @Route("/api/v1/submit/latlng", name="location_submit", methods={"POST"})
      *
      * Available POST parameters:
@@ -35,11 +91,12 @@ class ApiController extends AbstractController
      *
      * @return Response
      */
-    public function index(): Response
+    public function submitLatLng(): Response
     {
         $apiKey = $_POST['api-key'] ?? null;
 
-        if ($apiKey !== $this->params->get('api-key')) {
+        if ($apiKey !== $this->params->get('api-key'))
+        {
             return new Response('Invalid API key.', Response::HTTP_UNAUTHORIZED);
         }
 
@@ -53,7 +110,7 @@ class ApiController extends AbstractController
             return new Response(400);
         }
 
-        $stmt = $this->pdo->prepare("INSERT INTO \"LocationTest\"(latlong) VALUES (POINT(:lat, :lng))");
+        $stmt = $this->pdo->prepare("INSERT INTO \"Locations\"(latlong) VALUES (POINT(:lat, :lng))");
 
         $stmt->bindParam(':lat', $lat);
         $stmt->bindParam(':lng', $lng);

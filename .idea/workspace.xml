@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="Fix database .env &amp; latlong post via API.">
+    <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="Display work information, editing. Display locations, editing. Reverse geocoding.">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/job_edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/jobs.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/location_edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/locations.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base_admin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pothole-detection.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pothole-detection.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ApiController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MapController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/about/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/main.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/map/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/map/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/report/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/report/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,13 +175,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="ts.external.directory.path" value="F:\Program Files\PhpStorm 2020.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\pothole\pothole-detection\templates\admin" />
+      <recent name="C:\xampp\htdocs\pothole\pothole-detection\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\pothole\pothole-detection\public\assets" />
       <recent name="C:\xampp\htdocs\pothole\pothole-detection\assets\leaflet" />
       <recent name="C:\xampp\htdocs\pothole\pothole-detection" />
     </key>
@@ -186,7 +206,7 @@
       <workItem from="1648029561924" duration="114000" />
       <workItem from="1648029702319" duration="60000" />
       <workItem from="1648032078917" duration="3335000" />
-      <workItem from="1648118578463" duration="9269000" />
+      <workItem from="1648118578463" duration="39903000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1645745441901</created>
@@ -265,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648127512673</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add API key, display created at for markers.">
+      <created>1648128150206</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1648128150206</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,6 +323,8 @@
     <MESSAGE value="Configuration files." />
     <MESSAGE value="API Controller&#10;Display markers from database&#10;PDO Postgres connection" />
     <MESSAGE value="Fix database .env &amp; latlong post via API." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix database .env &amp; latlong post via API." />
+    <MESSAGE value="Add API key, display created at for markers." />
+    <MESSAGE value="Display work information, editing. Display locations, editing. Reverse geocoding." />
+    <option name="LAST_COMMIT_MESSAGE" value="Display work information, editing. Display locations, editing. Reverse geocoding." />
   </component>
 </project>

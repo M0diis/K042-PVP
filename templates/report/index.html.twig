@@ -3,8 +3,8 @@
 {% block body %}
     <br>
     <div class="main-panel">
-        <div class="container">
-            <div class="row sm-3 align-items-center">
+        <div class="container card">
+            <div class="row align-items-center card-body" style="margin: 20px;">
 
                 {% if messages|default(null) %}
                     <div class="alert alert-success" role="alert">
@@ -22,24 +22,23 @@
                     </div>
                 {% endif %}
 
-                <form method="post" action="/report/submit">
+                <form method="post" action="/report/submit" enctype="multipart/form-data">
                     <div class="form-control-sm">
-                        <label for="name">Vardas</label>
-                        <input type="text" class="form-control" name="name" id="name">
-                    </div>
-                    <div class="form-control-sm">
-                        <label for="phone">Telefono nr.</label>
-                        <input type="text" class="form-control" name="phone" id="phone">
-                    </div>
-                    <div class="form-control-sm">
-                        <label for="email">El. paštas</label>
+                        <label for="email" style="font-weight: bold">Jūsų el. paštas</label>
+                        <p>El. paštas bus naudojamas susisiekti pranešti dėl sutvarkytos problemos.</p>
                         <input type="text" class="form-control" name="email" id="email">
                     </div>
                     <div class="form-control-sm">
-                        <label for="address">Vietos adresas</label>
-                        <input type="text" class="form-control" name="address" id="address">
+                        <label for="image" style="font-weight: bold">Nuotrauka</label>
+                        <p>Prašome įkelti rastos duobės nuotrauką, kad įsitikinti dėl pranešimo autentifiškumo.</p>
+                        <input type="file" class="form-control" name="image_file" id="image">
                     </div>
-                    <button type="submit" class="btn btn-success">Pranešti</button>
+
+                    <div class="form-control-sm">
+                        <button type="submit" class="btn btn-sm btn-success">Pranešti</button>
+                    </div>
+
+
                 </form>
             </div>
         </div>

@@ -20,18 +20,24 @@ class ReportController extends AbstractController
 
         $this->pdo = new PDO($dsn, $params->get('database_user'), $params->get('database_password'), [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
     }
+    /**
+     * @Route("/report/submit", name="report_to_main", methods={"GET", "HEAD"})
+     */
+    public function redirectToGet() : Response
+    {
+        return $this->redirectToRoute('report');
+    }
 
     /**
      * @Route("/report/submit", name="report_submit", methods={"POST"})
      */
     public function report(Request $request) : Response
     {
-        $name = $request->request->get('name');
-        $number = $request->request->get('phone');
         $email = $request->request->get('email');
-        $address = $request->request->get('address');
+        $lat = $request->request->get('lat');
+        $long = $request->request->get('long');
 
-        if(empty($name) || empty($number) || empty($email) ||  empty($address))
+        if(empty($name) || empty($number) || empty($email) ||  empty($address) || empty($_FILES))
         {
             return $this->render('report/index.html.twig', [
                 'errors' => [
@@ -40,9 +46,38 @@ class ReportController extends AbstractController
             ]);
         }
 
-        //$sql = "INSERT INTO user_reports (name, number, email, address) VALUES (:name, :number, :email, :address)";
+        if($_FILES['image_file']['size'] > 10485760)
+        {
+            return $this->render('report/index.html.twig', [
+                'errors' => [
+                    'Failas dydis per didelis.'
+                ]
+            ]);
+        }
 
-        //$result = $this->conn->query($sql);
+        $file = $_FILES['image_file'];
+
+        // get bytes
+        $data = file_get_contents($file['tmp_name']);
+
+        // encode to base64
+        $base64 = base64_encode($data);
+
+        $query = "INSERT INTO \"Images\"(data, file_type) VALUES ('$base64', '$file[type]')";
+
+        $this->pdo->query($query);
+
+        $image_id = $this->pdo->lastInsertId();
+
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO \"Locations\" (image_id, latlong, email, status) 
+                    VALUES (:image_id, Point(:lat, :long), :email, 'Laukia patvirtinimo')");
+
+        $stmt->bindParam(':image_id', $image_id);
+        $stmt->bindParam(':lat', $lat);
+        $stmt->bindParam(':long', $long);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
 
         return $this->render('report/index.html.twig', [
             'messages' => [

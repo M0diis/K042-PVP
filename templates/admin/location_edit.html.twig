@@ -1,0 +1,42 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block body %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="card">
+        <div class="card-body">
+            <form method="post" action="/admin/edit/location/submit" enctype="multipart/form-data">
+                <div class="form-control-sm">
+                    <label for="id">ID</label>
+                    <input disabled type="text" class="form-control" name="id" id="id" value="{{ location.location_id }}">
+                </div>
+                <div class="form-control-sm">
+                    <label for="lat">Ilguma</label>
+                    <input type="text" class="form-control" name="lat" id="lat" value="{{ location.lat }}">
+                </div>
+                <div class="form-control-sm">
+                    <label for="long">Platuma</label>
+                    <input type="text" class="form-control" name="long" id="long" value="{{ location.long }}">
+                </div>
+                <div class="form-control-sm">
+                    <label for="email">Pranešėjo el. paštas</label>
+                    <input type="text" class="form-control" name="email" id="email" value="{{ location.email }}">
+                </div>
+                <div class="form-control-sm">
+                    <label for="created_at">Sukurta</label>
+                    <input type="text" class="form-control" name="created_at" id="created_at" value="{{ location.created_at }}">
+                </div>
+
+                <div class="form-control-sm">
+                    <button type="submit" class="btn btn-sm btn-success">Išsaugoti</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+
+{% block navigation %}
+    {{ parent() }}
+{% endblock %}
+

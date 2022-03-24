@@ -109,5 +109,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="esri-leaflet-geocoder" level="application" />
+    <orderEntry type="library" name="esri-leaflet" level="application" />
+    <orderEntry type="library" name="esri-leaflet-vector" level="application" />
   </component>
 </module>

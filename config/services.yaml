@@ -9,6 +9,7 @@ parameters:
     database_password: "postgres"
     database_name: "Main"
     api-key: "4d-zxb2_=ahky68b9zbr7g1as324#zb45_=2a3+"
+    geocode-api-key: "AAPKfa869c04abca4be7b67082007f71bd03dIOoH9wMrdc1IacMrk1yAWkHTNv9euC84dgU3abrG8E4VDxQdBnz8r_ZN7j8c8Zu"
 
 services:
     # default configuration for services in *this* file

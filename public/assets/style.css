@@ -11551,6 +11551,14 @@ button.bg-dark:hover,
 button.bg-dark:focus {
     background-color: #2e3345 !important; }
 
+.bg-black {
+    background-color: black !important; }
+
+a.bg-black:hover, a.bg-black:focus,
+button.bg-black:hover,
+button.bg-black:focus {
+    background-color: black !important; }
+
 .bg-white {
     background-color: #ffffff !important; }
 

@@ -38,7 +38,7 @@
 
 
     {% block navigation %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-black" style="padding-left: 42%;">
+        <nav class="navbar navbar-expand-lg navbar-light bg-black" style="padding-left: 37%;">
             <div class="text-center">
                 <a class="navbar-brand text-light font-weight-bold" href="{{ path('main') }}">ROADCHECK ඞ</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -56,6 +56,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" style="padding: 10px; margin: 15px;" href="{{ path('report') }}">PRANEŠK</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" style="padding: 10px; margin: 15px;" href="{{ path('admin_main') }}">ADMINISTRAVIMAS</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -65,9 +68,37 @@
 </head>
 <body>
     <div class="d-flex flex-column min-vh-100">
-    {% block body %}
+        <div class="content-wrapper">
+            <div class="row" style="--bs-gutter-x: 0;">
+                <nav class="col-sm-2 d-none d-md-block bg-black sidebar">
+                    <div class="sidebar-sticky" style="font-size: 18px; height: 100vh; color: white;">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" style="color: white;" href="{{ path("admin_main") }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                    PRADINIS
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: white;" href="{{ path("admin_locations") }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                                    DUOBIŲ SĄRAŠAS
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: white;" href="{{ path("admin_jobs") }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 2 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file" aria-hidden="true"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                                    DARBŲ SĄRAŠAS
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            {% block body %}
 
-    {% endblock %}
+            {% endblock %}
+            </div>
+        </div>
     </div>
 
     <footer class="bg-black text-center text-lg-start">
