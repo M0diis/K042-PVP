@@ -24,7 +24,7 @@ class MapController extends AbstractController
      */
     public function index(): Response
     {
-        $locations = $this->pdo->query("SELECT latlong[0] as lat, latlong[1] as long  FROM \"LocationTest\"")->fetchAll();
+        $locations = $this->pdo->query("SELECT latlong[0] as lat, latlong[1] as long, created_at FROM \"LocationTest\"")->fetchAll();
 
         return $this->render('map/index.html.twig', [
             'locations' => $locations,

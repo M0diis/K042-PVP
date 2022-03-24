@@ -8,6 +8,7 @@ parameters:
     database_user: "postgres"
     database_password: "postgres"
     database_name: "Main"
+    api-key: "4d-zxb2_=ahky68b9zbr7g1as324#zb45_=2a3+"
 
 services:
     # default configuration for services in *this* file

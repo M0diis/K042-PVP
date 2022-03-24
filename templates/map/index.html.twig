@@ -14,10 +14,10 @@
         {% if locations|default(null) %}
             {% for loc in locations %}
                 var marker = L.marker([{{ loc.lat }}, {{ loc.long }}]).addTo(map);
+
+                marker.bindPopup("<b>Created at {{ loc.created_at }}</b>");
             {% endfor %}
         {% endif %}
-
-        marker.bindPopup("<b>Marker test.</b>").openPopup();
 
         var popup = L.popup();
 

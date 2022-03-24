@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="API Controller&#10;Display markers from database&#10;PDO Postgres connection">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="Fix database .env &amp; latlong post via API.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MapController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/map/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/map/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +186,7 @@
       <workItem from="1648029561924" duration="114000" />
       <workItem from="1648029702319" duration="60000" />
       <workItem from="1648032078917" duration="3335000" />
-      <workItem from="1648118578463" duration="8632000" />
+      <workItem from="1648118578463" duration="9269000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1645745441901</created>
@@ -257,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648126659075</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fix database .env &amp; latlong post via API.">
+      <created>1648127512673</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1648127512673</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +295,7 @@
     <MESSAGE value="Style changes." />
     <MESSAGE value="Configuration files." />
     <MESSAGE value="API Controller&#10;Display markers from database&#10;PDO Postgres connection" />
-    <option name="LAST_COMMIT_MESSAGE" value="API Controller&#10;Display markers from database&#10;PDO Postgres connection" />
+    <MESSAGE value="Fix database .env &amp; latlong post via API." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix database .env &amp; latlong post via API." />
   </component>
 </project>
