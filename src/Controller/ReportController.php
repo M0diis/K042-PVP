@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use mysqli;
+use PDO;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,21 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ReportController extends AbstractController
 {
-    private mysqli $conn;
+    private PDO $pdo;
 
     public function __construct(ParameterBagInterface $params)
     {
-        $this->conn = new mysqli(
-            $params->get('database_host'),
-            $params->get('database_user'),
-            $params->get('database_password'),
-            $params->get('database_name')
-        );
+        $dsn = "pgsql:host=".$params->get('database_host').";port=5432;dbname=".$params->get('database_name').";";
 
-        if ($this->conn->connect_error)
-        {
-            die("Connection failed: " . $this->conn->connect_error);
-        }
+        $this->pdo = new PDO($dsn, $params->get('database_user'), $params->get('database_password'), [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
     }
 
     /**

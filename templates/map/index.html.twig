@@ -11,7 +11,11 @@
 
         map.setView(new L.LatLng(54.911824, 23.923679), 13).addLayer(osm);
 
-        var marker = L.marker([54.90820771704568, 23.958540403472753]).addTo(map);
+        {% if locations|default(null) %}
+            {% for loc in locations %}
+                var marker = L.marker([{{ loc.lat }}, {{ loc.long }}]).addTo(map);
+            {% endfor %}
+        {% endif %}
 
         marker.bindPopup("<b>Marker test.</b>").openPopup();
 

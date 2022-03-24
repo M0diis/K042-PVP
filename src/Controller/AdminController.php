@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use mysqli;
+use PDO;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,21 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 {
-    private mysqli $conn;
+    private PDO $pdo;
 
     public function __construct(ParameterBagInterface $params)
     {
-        $this->conn = new mysqli(
-            $params->get('database_host'),
-            $params->get('database_user'),
-            $params->get('database_password'),
-            $params->get('database_name')
-        );
+        $dsn = "pgsql:host=".$params->get('database_host').";port=5432;dbname=".$params->get('database_name').";";
 
-        if ($this->conn->connect_error)
-        {
-            die("Connection failed: " . $this->conn->connect_error);
-        }
+        $this->pdo = new PDO($dsn, $params->get('database_user'), $params->get('database_password'), [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
     }
 
     /**
@@ -33,20 +26,28 @@ class AdminController extends AbstractController
      */
     public function login(Request $request) : Response
     {
-        $username = $request->request->get('username');
         $email = $request->request->get('email');
         $password = $request->request->get('password');
 
-        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-        $result = $this->conn->query($sql);
+        $stmt = $this->pdo->prepare("SELECT * FROM \"Users\" WHERE email = :email AND password = :password");
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
 
-        if ($result->num_rows > 0)
+        $stmt->execute();
+
+        $user = $stmt->fetch();
+
+        if ($user)
         {
             return $this->redirectToRoute('admin_main');
         }
         else
         {
-            return $this->index();
+            return $this->render("admin/index.html.twig", [
+                'errors' => [
+                    'Neteisingas el. pašto adresas arba slaptažodis.'
+                ]
+            ]);
         }
     }
 
