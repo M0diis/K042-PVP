@@ -10,7 +10,7 @@
         var map = new L.Map('map');
 
         var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            osmAttrib = 'Map data &copy; 2022 OpenStreetMap contributors (https://www.openstreetmap.org/copyright)',
+            osmAttrib = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">2022 OpenStreetMap contributors</a>',
             osm = new L.TileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib});
 
         var lat = 54.911824;
@@ -32,7 +32,7 @@
             {% for loc in locations %}
                 var marker = L.marker([{{ loc.lat }}, {{ loc.long }}]).addTo(map);
 
-                marker.bindPopup("<b>Pranešimo data:</b> <br> {{ loc.created_at|split(".")[0] }}");
+                marker.bindPopup("<b>Pranešimo data:</b> <br>{{ loc.created_at|split(".")[0] }}");
             {% endfor %}
         {% endif %}
 
@@ -41,7 +41,7 @@
         function onMapClick(e)
         {
             var geocodeService = L.esri.Geocoding.geocodeService({
-                apikey: "AAPKfa869c04abca4be7b67082007f71bd03dIOoH9wMrdc1IacMrk1yAWkHTNv9euC84dgU3abrG8E4VDxQdBnz8r_ZN7j8c8Zu" // replace with your api key - https://developers.arcgis.com
+                apikey: "AAPKfa869c04abca4be7b67082007f71bd03dIOoH9wMrdc1IacMrk1yAWkHTNv9euC84dgU3abrG8E4VDxQdBnz8r_ZN7j8c8Zu"
             });
 
             geocodeService.reverse().latlng(e.latlng).run(function (error, result)

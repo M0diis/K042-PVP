@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="About page. Display work information, editing. Display locations, editing. Reverse geocoding. Admin panel, nav bar.">
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pothole-detection.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pothole-detection.iml" afterDir="false" />
+    <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="Update base map popups. Check for empty file and fix input checking in reports. Add map selection in reports.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/about/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/job_edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/job_edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/jobs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/jobs.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/location_edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/location_edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/locations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/locations.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/login.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/api/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/api/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/map/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/map/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/report/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/report/index.html.twig" afterDir="false" />
     </list>
@@ -199,7 +197,7 @@
       <workItem from="1648118578463" duration="40701000" />
       <workItem from="1648200759829" duration="3417000" />
       <workItem from="1648332413487" duration="1179000" />
-      <workItem from="1648334052459" duration="1408000" />
+      <workItem from="1648334052459" duration="2529000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1645745441901</created>
@@ -292,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648165433636</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Update base map popups. Check for empty file and fix input checking in reports. Add map selection in reports.">
+      <created>1648335532503</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1648335532503</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,6 +331,7 @@
     <MESSAGE value="Add API key, display created at for markers." />
     <MESSAGE value="Display work information, editing. Display locations, editing. Reverse geocoding." />
     <MESSAGE value="About page. Display work information, editing. Display locations, editing. Reverse geocoding. Admin panel, nav bar." />
-    <option name="LAST_COMMIT_MESSAGE" value="About page. Display work information, editing. Display locations, editing. Reverse geocoding. Admin panel, nav bar." />
+    <MESSAGE value="Update base map popups. Check for empty file and fix input checking in reports. Add map selection in reports." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update base map popups. Check for empty file and fix input checking in reports. Add map selection in reports." />
   </component>
 </project>
