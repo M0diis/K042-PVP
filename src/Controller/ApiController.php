@@ -68,7 +68,7 @@ class ApiController extends AbstractController
     {
         $id = $request->attributes->get('id');
 
-        $stmt = $this->pdo->prepare("SELECT * FROM \"Locations\" WHERE location_id = :id");
+        $stmt = $this->pdo->prepare('SELECT * FROM "Locations" WHERE location_id = :id');
         $stmt->bindParam(':id', $id);
         $stmt->execute();
 

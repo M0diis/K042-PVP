@@ -37,7 +37,16 @@ class ReportController extends AbstractController
         $lat = $request->request->get('lat');
         $long = $request->request->get('long');
 
-        if(empty($name) || empty($number) || empty($email) ||  empty($address) || empty($_FILES))
+        if(empty($_FILES['image_file']['name']))
+        {
+            return $this->render('report/index.html.twig', [
+                'errors' => [
+                    'Prašome įkelti rastos kelio duobės nuotrauką.'
+                ]
+            ]);
+        }
+
+        if(empty($lat) || empty($long) || empty($email))
         {
             return $this->render('report/index.html.twig', [
                 'errors' => [

@@ -1,11 +1,58 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    „ROADCHECK“ | Pranešti
+{% endblock %}
+
 {% block body %}
+    <div id="map" style="height: 50vh;"></div>
+    <script type="text/javascript">
+        var map = new L.Map('map');
+
+        var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            osmAttrib = 'Map data &copy; 2022 OpenStreetMap contributors (https://www.openstreetmap.org/copyright)',
+            osm = new L.TileLayer(osmUrl, {maxZoom: 19, attribution: osmAttrib});
+
+        var lat = 54.911824;
+        var lng = 23.923679;
+        var zoom = 13;
+
+        map.setView(new L.LatLng(lat, lng), zoom).addLayer(osm);
+
+        var popup = L.popup();
+
+        function onMapClick(e)
+        {
+            var geocodeService = L.esri.Geocoding.geocodeService({
+                apikey: "AAPKfa869c04abca4be7b67082007f71bd03dIOoH9wMrdc1IacMrk1yAWkHTNv9euC84dgU3abrG8E4VDxQdBnz8r_ZN7j8c8Zu" // replace with your api key - https://developers.arcgis.com
+            });
+
+            geocodeService.reverse().latlng(e.latlng).run((error, result) =>
+            {
+                if (error)
+                {
+                    return;
+                }
+
+                popup.setLatLng(e.latlng)
+                    .setContent("<b>Pasirinkote adresą:</b> <br> " + result.address.LongLabel)
+                    .openOn(map);
+
+                document.getElementById("address").value = result.address.LongLabel;
+            });
+
+            document.getElementById("lat").value = e.latlng.lat;
+            document.getElementById("long").value = e.latlng.lng;
+        }
+
+        map.on('click', onMapClick);
+
+        L.Control.geocoder().addTo(map);
+    </script>
     <br>
     <div class="main-panel">
         <div class="container card">
             <div class="row align-items-center card-body" style="margin: 20px;">
-
                 {% if messages|default(null) %}
                     <div class="alert alert-success" role="alert">
                         {% for msg in messages %}
@@ -28,17 +75,25 @@
                         <p>El. paštas bus naudojamas susisiekti pranešti dėl sutvarkytos problemos.</p>
                         <input type="text" class="form-control" name="email" id="email">
                     </div>
+
+                    <div class="form-control-sm disabled">
+                        <label for="address" style="font-weight: bold">Adresas</label>
+                        <p>Nurodykite adresą spausdami ant žemėlapio.</p>
+                        <input type="text" class="form-control" disabled name="address" id="address">
+                    </div>
+
                     <div class="form-control-sm">
                         <label for="image" style="font-weight: bold">Nuotrauka</label>
                         <p>Prašome įkelti rastos duobės nuotrauką, kad įsitikinti dėl pranešimo autentifiškumo.</p>
                         <input type="file" class="form-control" name="image_file" id="image">
                     </div>
 
+                    <input type="hidden" id="lat" class="form-control" name="lat">
+                    <input type="hidden"  id="long" class="form-control" name="long">
+
                     <div class="form-control-sm">
                         <button type="submit" class="btn btn-sm btn-success">Pranešti</button>
                     </div>
-
-
                 </form>
             </div>
         </div>

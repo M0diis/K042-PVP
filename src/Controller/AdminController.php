@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use mysqli;
 use PDO;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,8 +15,9 @@ class AdminController extends AbstractController
 {
     private PDO $pdo;
     private ParameterBagInterface $params;
+    private LoggerInterface $logger;
 
-    public function __construct(ParameterBagInterface $params)
+    public function __construct(ParameterBagInterface $params, LoggerInterface $logger)
     {
         $this->params = $params;
 
