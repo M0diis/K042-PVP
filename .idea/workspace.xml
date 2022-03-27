@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="Center admin navbar. Remove         &quot;symfony/webpack-encore-pack&quot;: &quot;^1.0&quot;,">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pothole-detection.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pothole-detection.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base_admin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_admin.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +134,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/link" />
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-code" />
       <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/requirements-checker" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -193,7 +195,7 @@
       <workItem from="1648332413487" duration="1179000" />
       <workItem from="1648334052459" duration="5748000" />
       <workItem from="1648341366515" duration="708000" />
-      <workItem from="1648384835643" duration="6624000" />
+      <workItem from="1648384835643" duration="7265000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1645745441901</created>
@@ -321,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648389280675</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Center admin navbar. Remove         &quot;symfony/webpack-encore-pack&quot;: &quot;^1.0&quot;,">
+      <created>1648393869158</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1648393869158</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
