@@ -8,32 +8,32 @@
     <div class="content-wrapper">
         <div class="row">
             <div class="col-xl-12 grid-margin">
-                    <form method="post" action="/admin/edit/job/submit" enctype="multipart/form-data">
-                        <div class="form-control-sm">
-                            <label for="id">ID</label>
-                            <input disabled type="text" class="form-control" name="id" id="id" value="{{ work.work_info_id }}">
-                        </div>
-                        <div class="form-control-sm">
-                            <label for="work_start">Darbų pradžia</label>
-                            <input type="date" class="form-control" name="job_start" id="work_start" value="{{ work.work_start }}">
-                        </div>
-                        <div class="form-control-sm">
-                            <label for="work_start">Darbų pabaiga</label>
-                            <input type="date" class="form-control" name="work_start" id="work_start" value="{{ work.work_end }}">
-                        </div>
+                <form method="post" action="/admin/edit/job/submit" enctype="multipart/form-data">
+                    <div class="form-control-sm">
+                        <label for="id">ID</label>
+                        <input disabled type="text" class="form-control" name="id" id="id" value="{{ work.work_info_id }}">
+                    </div>
+                    <div class="form-control-sm">
+                        <label for="work_start">Darbų pradžia</label>
+                        <input type="date" class="form-control" name="job_start" id="work_start" value="{{ work.work_start }}">
+                    </div>
+                    <div class="form-control-sm">
+                        <label for="work_start">Darbų pabaiga</label>
+                        <input type="date" class="form-control" name="work_start" id="work_start" value="{{ work.work_end }}">
+                    </div>
 
-                        <div class="form-control-sm">
-                            <label for="created_at">Sukurta</label>
-                            <input type="text" class="form-control" name="created_at" id="created_at" value="{{ work.created_at }}">
-                        </div>
+                    <div class="form-control-sm">
+                        <label for="created_at">Sukurta</label>
+                        <input type="text" class="form-control" name="created_at" id="created_at" value="{{ work.created_at }}">
+                    </div>
 
-                        <div class="form-control-sm">
-                            <label for="price">Kaina</label>
-                            <input type="text" class="form-control" name="price" id="price" value="{{ work.price }}">
-                        </div>
+                    <div class="form-control-sm">
+                        <label for="price">Kaina</label>
+                        <input type="text" class="form-control" name="price" id="price" value="{{ work.price }}">
+                    </div>
 
-                        <button type="submit" class="btn btn-success">Išsaugoti</button>
-                    </form>
+                    <button type="submit" class="btn btn-success">Išsaugoti</button>
+                </form>
             </div>
         </div>
     </div>

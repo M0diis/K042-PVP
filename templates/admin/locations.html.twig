@@ -9,47 +9,22 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <div id="map" style="height: 50vh;"></div>
     <script type="text/javascript">
-        var map = new L.Map('map');
-
-        var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            osmAttrib = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">2022 OpenStreetMap contributors</a>',
-            osm = new L.TileLayer(osmUrl, {maxZoom: 19, attribution: osmAttrib});
-
-        var lat = 54.911824;
-        var lng = 23.923679;
-        var zoom = 13;
-
-        map.setView(new L.LatLng(lat, lng), zoom).addLayer(osm);
-
-        {% if locations|default(null) %}
-            {% for loc in locations %}
-                var marker = L.marker([{{ loc.lat }}, {{ loc.lng }}]).addTo(map);
-
-                marker.bindPopup("<b>Pranešimo data:</b> <br>{{ loc.created_at|split(".")[0] }}");
-            {% endfor %}
-        {% endif %}
-
-        var popup = L.popup();
-
-        function onMapClick(e)
+        (async() =>
         {
-            var geocodeService = L.esri.Geocoding.geocodeService({
-                apikey: "AAPKfa869c04abca4be7b67082007f71bd03dIOoH9wMrdc1IacMrk1yAWkHTNv9euC84dgU3abrG8E4VDxQdBnz8r_ZN7j8c8Zu"
+            const map = await getMap(54.911824, 23.923679);
+
+            {% if locations|default(null) %}
+                {% for loc in locations %}
+                    var marker = L.marker([{{ loc.lat }}, {{ loc.lng }}]).addTo(map);
+
+                    marker.bindPopup("<b>Pranešimo data:</b> <br>{{ loc.created_at|split(".")[0] }}");
+                {% endfor %}
+            {% endif %}
+
+            map.on('click', (e) => {
+                locationPopup(e, map, L.popup());
             });
-
-            geocodeService.reverse().latlng(e.latlng).run((error, result) =>
-            {
-                if (error) return;
-
-                popup.setLatLng(e.latlng)
-                    .setContent("<b>Pasirinkote adresą:</b> <br> " + result.address.LongLabel)
-                    .openOn(map);
-            });
-        }
-
-        map.on('click', onMapClick);
-
-        L.Control.geocoder().addTo(map);
+        })();
     </script>
     <div class="card">
         <div class="card-body">
@@ -91,7 +66,6 @@
                                 <td>
                                     {{ loc.lat }}
                                 </td>
-                                </td>
                                 <td>
                                     {{ loc.lng }}
                                 </td>
@@ -100,21 +74,15 @@
                                 </td>
 
                                 <script>
-                                    var geocodeService = L.esri.Geocoding.geocodeService({
-                                        apikey: "{{ geocode_api_key }}"
-                                    });
-
                                     var latLng = L.latLng({{ loc.lat }}, {{ loc.lng }});
 
                                     var address;
 
-                                    geocodeService.reverse().latlng(latLng).run(function (error, result) {
-                                        if (error) {
-                                            return;
-                                        }
+                                    geocodeService.reverse().latlng(latLng).run((err, result) =>
+                                    {
+                                        if (err) return;
 
                                         var el = document.getElementById("address");
-                                        console.log(result);
 
                                         el.innerHTML = result.address.LongLabel;
                                         el.id = "";
@@ -166,6 +134,8 @@
                                 var imgEl = document.getElementById("image");
 
                                 var img = new Image();
+
+                                // TODO
 
                                 img.src = "http://127.0.0.1:8000/api/v1/getimage/1.png";
 

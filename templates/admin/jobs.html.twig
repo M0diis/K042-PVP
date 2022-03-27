@@ -57,23 +57,18 @@
 
                                 </td>
                                 <script>
-                                    var geocodeService = L.esri.Geocoding.geocodeService({
-                                        apikey: "{{ geocode_api_key }}"
-                                    });
+                                    async function getAddress()
+                                    {
+                                        var latlng = L.latLng({{ job.lat }}, {{ job.lng }});
 
-                                    var latLng = L.latLng({{ job.lat }}, {{ job.lng }});
-
-                                    var address;
-
-                                    geocodeService.reverse().latlng(latLng).run(function (error, result) {
-                                        if (error) {
-                                            return;
-                                        }
+                                        var result = await reverse(latlng);
 
                                         var el = document.getElementById("address");
                                         el.innerHTML = result.address.LongLabel;
                                         el.id = "";
-                                    });
+                                    }
+
+                                    getAddress();
                                 </script>
 
                                 <td>
