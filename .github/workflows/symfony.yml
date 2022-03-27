@@ -8,7 +8,7 @@ on:
 
 jobs:
   symfony:
-    name: Symfony 5.0 (PHP ${{ matrix.php-versions }})
+    name: Symfony 6.0 (PHP ${{ matrix.php-versions }})
     # https://hub.docker.com/_/ubuntu/
     runs-on: ubuntu-latest
     strategy:
@@ -47,13 +47,13 @@ jobs:
       - name: Security check installed dependencies
         uses: symfonycorp/security-checker-action@v2
 
-      # https://github.com/chekalsky/phpcs-action (community)
-      - name: Check PSR12 code style (PHP_CodeSniffer)
-        uses: chekalsky/phpcs-action@v1.2.0
-        with:
-          enable_warnings: true
-          installed_paths: '${{ github.workspace }}/vendor/squizlabs/php_codesniffer'
-          phpcs_bin_path: './vendor/bin/phpcs src --ignore="Migrations/"'
+#       # https://github.com/chekalsky/phpcs-action (community)
+#       - name: Check PSR12 code style (PHP_CodeSniffer)
+#         uses: chekalsky/phpcs-action@v1.2.0
+#         with:
+#           enable_warnings: true
+#           installed_paths: '${{ github.workspace }}/vendor/squizlabs/php_codesniffer'
+#           phpcs_bin_path: './vendor/bin/phpcs src --ignore="Migrations/"'
 
       # https://github.com/phpmd/phpmd
       # - name: Analyses PHP Code (PHP Mess Detector)
