@@ -26,20 +26,43 @@
             <hr>
 
             <div class="row" style="background: black;color: white;padding: 30px;">
-                <div class="col-sm-6 flex-row">
-                    <a href="/map"><img src="assets/img1.png" class="card-img" alt="..."></a>
+                <div class="col-lg-6 flex-row">
+                    <a href="/map"><img src="assets/img1.png" class="img-sm img-fluid rounded mx-auto d-block" alt="..."></a>
 
                 </div>
 
-                <div class="col-sm-6 flex-row" style="padding-top: 15%;">
-                    <h5 class="card-title">Jūs taip pat galite prisidėti prie geresnės kelio kokybės!</h5>
-                    <p class="card-text">Pateikite informaciją apie pastebetą duobę paprasčiausiai pažymėdami ją žemėlapyje.</p>
+                <div class="col-lg-6 flex-row" style="padding-top: 15%;">
+                    <h5 class="card-title text-center">Jūs taip pat galite prisidėti prie geresnės kelio kokybės!</h5>
+                    <p class="card-text text-center">Pateikite informaciją apie pastebetą duobę paprasčiausiai pažymėdami ją žemėlapyje.</p>
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
 
+{% block footer %}
+<div class="row">
+
+</div>
+<div class="container p-4">
+
+    <div class="row text-center">
+        <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase text-white">„ROADCHECK“ Lietuva</h5>
+        </div>
+
+        <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase text-white"></h5>
+        </div>
+
+        <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase text-white">info@roadcheck.lt</h5>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
 
 {% block navigation %}
     {{ parent() }}

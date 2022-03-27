@@ -10,6 +10,7 @@ class AboutController extends AbstractController
 {
     /**
      * @Route("/about", name="about")
+     * @Route("/apie")
      */
     public function index(): Response
     {

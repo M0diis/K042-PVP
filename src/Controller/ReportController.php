@@ -22,6 +22,7 @@ class ReportController extends AbstractController
     }
     /**
      * @Route("/report/submit", name="report_to_main", methods={"GET", "HEAD"})
+     * @Route("/pranesimas/patvirtinti", name="pranesimas_i_pradini", methods={"GET", "HEAD"})
      */
     public function redirectToGet() : Response
     {
@@ -30,6 +31,7 @@ class ReportController extends AbstractController
 
     /**
      * @Route("/report/submit", name="report_submit", methods={"POST"})
+     * @Route("/pranesimas/patvirtinti", name="patvirtinti_pranesima", methods={"POST"})
      */
     public function report(Request $request) : Response
     {
@@ -97,6 +99,8 @@ class ReportController extends AbstractController
 
     /**
      * @Route("/report", name="report")
+     * @Route("/pranesti", name="pranesti")
+     * @Route("/pranesimas", name="pranesimas")
      */
     public function index(): Response
     {
