@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="Add requirement checker.">
+    <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="Code cleanup. Reduce code repetitions.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/job_edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/job_edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MapController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/jobs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/jobs.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/location_edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/location_edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/locations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/locations.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/main.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/main.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base_admin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_admin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/map/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/map/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/report/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/report/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +197,7 @@
       <workItem from="1648332413487" duration="1179000" />
       <workItem from="1648334052459" duration="5748000" />
       <workItem from="1648341366515" duration="708000" />
-      <workItem from="1648384835643" duration="11911000" />
+      <workItem from="1648384835643" duration="12908000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1645745441901</created>
@@ -343,7 +339,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648394842917</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Code cleanup. Reduce code repetitions.">
+      <created>1648399175346</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1648399175346</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,6 +387,7 @@
     <MESSAGE value="Add interactive map to admin panel location list. Change and improve admin panel location edit. Fix navigation bar in admin panel. Add /api/v1/getall route to get all locations. Change all &quot;long&quot; naming to &quot;lng&quot;. Change queries to support geometry type data." />
     <MESSAGE value="Center admin navbar. Remove         &quot;symfony/webpack-encore-pack&quot;: &quot;^1.0&quot;," />
     <MESSAGE value="Add requirement checker." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add requirement checker." />
+    <MESSAGE value="Code cleanup. Reduce code repetitions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Code cleanup. Reduce code repetitions." />
   </component>
 </project>

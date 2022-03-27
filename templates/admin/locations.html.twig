@@ -74,19 +74,16 @@
                                 </td>
 
                                 <script>
-                                    var latLng = L.latLng({{ loc.lat }}, {{ loc.lng }});
-
-                                    var address;
-
-                                    geocodeService.reverse().latlng(latLng).run((err, result) =>
+                                    (async() =>
                                     {
-                                        if (err) return;
+                                        var latlng = L.latLng({{ loc.lat }}, {{ loc.lng }});
+
+                                        var result = await reverse(latlng);
 
                                         var el = document.getElementById("address");
-
                                         el.innerHTML = result.address.LongLabel;
                                         el.id = "";
-                                    });
+                                    })();
                                 </script>
 
                                 <td>

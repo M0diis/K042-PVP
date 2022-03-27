@@ -9,27 +9,11 @@
     <script type="text/javascript">
         (async() =>
         {
-            var lat = 54.911824;
-            var lng = 23.923679;
-
-            var zoom = 13;
-
-            {% if lat|default(null) %}
-                lat = {{ lat }};
-                zoom = 18;
-            {% endif %}
-            {% if long|default(null) %}
-                lng = {{ long }};
-                zoom = 18;
-            {% endif %}
-
-            var map = await getMap(lat, lng, zoom);
+            var map = await getMap({{ lat }}, {{ lng }}, {{ zoom }});
 
             {% if locations|default(null) %}
                 {% for loc in locations %}
-                    var marker = L.marker([{{ loc.lat }}, {{ loc.lng }}]).addTo(map);
-
-                    marker.bindPopup("<b>Pranešimo data:</b> <br>{{ loc.created_at|split(".")[0] }}");
+                    markerCreatedAt(map, {{ loc.lat }}, {{ loc.lng }}, '{{ loc.created_at|split(".")[0] }}');
                 {% endfor %}
             {% endif %}
 

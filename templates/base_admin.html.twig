@@ -64,6 +64,15 @@
                 return resolve(map);
             });
         }
+
+        const locationPopup = async (e, map, popup) =>
+        {
+            let result = await reverse(e.latlng);
+
+            popup.setLatLng(e.latlng)
+                .setContent("<b>Pasirinkote adresą:</b> <br> " + result.address.LongLabel)
+                .openOn(map);
+        }
     </script>
 
     {% block navigation %}

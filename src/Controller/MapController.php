@@ -26,12 +26,13 @@ class MapController extends AbstractController
     public function previewPanTo(Request $request): Response
     {
         $lat = $request->attributes->get('lat');
-        $long = $request->attributes->get('lng');
+        $lng = $request->attributes->get('lng');
 
         return $this->render('map/index.html.twig', [
             'locations' =>  $this->getLocations(),
             'lat' => $lat,
-            'long' => $long
+            'lng' => $lng,
+            'zoom' => 18
         ]);
     }
 
@@ -43,6 +44,9 @@ class MapController extends AbstractController
     {
         return $this->render('map/index.html.twig', [
             'locations' => $this->getLocations(),
+            'lat' => 54.911824,
+            'lng' => 23.923679,
+            'zoom' => 13
         ]);
     }
 

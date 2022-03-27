@@ -62,13 +62,20 @@
             });
         }
 
-        async function locationPopup(e, map, popup)
+        const locationPopup = async (e, map, popup) =>
         {
             let result = await reverse(e.latlng);
 
             popup.setLatLng(e.latlng)
                 .setContent("<b>Pasirinkote adresą:</b> <br> " + result.address.LongLabel)
                 .openOn(map);
+        }
+
+        const markerCreatedAt = (map, lat, long, createdAt) =>
+        {
+            var marker = L.marker([lat, long]).addTo(map);
+
+            marker.bindPopup("<b>Pranešimo data:</b> <br>" + createdAt);
         }
     </script>
 

@@ -57,7 +57,7 @@
 
                                 </td>
                                 <script>
-                                    async function getAddress()
+                                    (async() =>
                                     {
                                         var latlng = L.latLng({{ job.lat }}, {{ job.lng }});
 
@@ -66,9 +66,7 @@
                                         var el = document.getElementById("address");
                                         el.innerHTML = result.address.LongLabel;
                                         el.id = "";
-                                    }
-
-                                    getAddress();
+                                    })();
                                 </script>
 
                                 <td>
