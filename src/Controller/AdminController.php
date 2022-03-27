@@ -27,6 +27,14 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/admin/edit/location/submit", name="submiteditid", methods={"GET", "HEAD"})
+     */
+    public function submitToList() : Response
+    {
+        return $this->redirectToRoute("admin_main");
+    }
+
+    /**
      * @Route("/admin/edit/location/submit", name="submiteditid", methods={"POST"})
      */
     public function submitEdit(Request $request) : Response
@@ -34,16 +42,15 @@ class AdminController extends AbstractController
         $id = $request->request->get('id');
 
         $lat = $request->request->get('lat');
-        $long = $request->request->get('long');
+        $lng = $request->request->get('lng');
         $email = $request->request->get('email');
-        $status = $request->request->get('status');
 
-        $stmt = $this->pdo->prepare('UPDATE "Locations" SET latlong = Point(:lat, :long), email = :email, status = :status WHERE location_id = :id');
+        $stmt = $this->pdo->prepare("UPDATE \"Locations\" SET latlong = ST_POINT(:lat, :lng, 4326), email = :email WHERE location_id = :id");
+
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':lat', $lat);
-        $stmt->bindParam(':long', $long);
+        $stmt->bindParam(':lng', $lng);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':status', $status);
 
         $stmt->execute();
 
@@ -57,7 +64,7 @@ class AdminController extends AbstractController
     {
         $id = $request->attributes->get('id');
 
-        $stmt = $this->pdo->prepare('SELECT location_id, latlong[0] as lat, latlong[1] as long, created_at, email FROM "Locations" WHERE location_id = :id');
+        $stmt = $this->pdo->prepare('SELECT location_id, ST_X(latlong) AS lat, ST_Y(latlong) AS lng, created_at, email FROM "Locations" WHERE location_id = :id');
         $stmt->bindParam(':id', $id);
 
         $stmt->execute();
@@ -77,7 +84,7 @@ class AdminController extends AbstractController
         $id = $request->attributes->get('id');
 
         $stmt = $this->pdo->prepare(
-            'SELECT wi.location_id AS location_id, wi.work_info_id, latlong[0] AS lat, latlong[1] AS long, created_at, status, Wi.price, Wi.work_start, Wi.work_end
+            'SELECT wi.location_id AS location_id, wi.work_info_id, ST_X(latlong) AS lat, ST_Y(latlong) AS lng, created_at, status, Wi.price, Wi.work_start, Wi.work_end
                 FROM "Locations"
                 LEFT JOIN "Work_information" Wi 
                     ON Wi.location_id = "Locations".location_id
@@ -151,10 +158,8 @@ class AdminController extends AbstractController
      */
     public function main(): Response
     {
-        $locations = $this->pdo->query('SELECT location_id, latlong[0] as lat, latlong[1] as long, created_at FROM "Locations"')->fetchAll();
-
         return $this->render('admin/main.html.twig', [
-            'locations' => $locations,
+            'locations' => $this->getLocations(),
             'geocode_api_key' => $this->params->get('geocode-api-key')
         ]);
     }
@@ -163,10 +168,8 @@ class AdminController extends AbstractController
      */
     public function locations(): Response
     {
-        $locations = $this->pdo->query('SELECT location_id, latlong[0] as lat, latlong[1] as long, created_at FROM "Locations"')->fetchAll();
-
         return $this->render('admin/locations.html.twig', [
-            'locations' => $locations,
+            'locations' => $this->getLocations(),
             'geocode_api_key' => $this->params->get('geocode-api-key')
         ]);
     }
@@ -177,7 +180,7 @@ class AdminController extends AbstractController
     public function jobs(): Response
     {
         $jobs = $this->pdo->query('
-                SELECT wi.location_id AS location_id, wi.work_info_id, latlong[0] AS lat, latlong[1] AS long, created_at, status, Wi.price, Wi.work_start, Wi.work_end
+                SELECT wi.location_id AS location_id, wi.work_info_id, ST_X(latlong) AS lat, ST_Y(latlong) AS lng, created_at, status, Wi.price, Wi.work_start, Wi.work_end
                 FROM "Locations"
                 LEFT JOIN "Work_information" Wi 
                     ON Wi.location_id = "Locations".location_id')->fetchAll();
@@ -194,5 +197,10 @@ class AdminController extends AbstractController
     public function index(): Response
     {
         return $this->render('admin/login.html.twig');
+    }
+
+    private function getLocations(): array
+    {
+        return $this->pdo->query("SELECT location_id, ST_X(latlong) AS lat, ST_Y(latlong) AS lng, created_at, email FROM \"Locations\"")->fetchAll();
     }
 }

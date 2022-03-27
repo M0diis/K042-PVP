@@ -27,6 +27,22 @@ class ApiController extends AbstractController
     }
 
     /**
+     * @Route("/api/v1/getall", name="get_all")
+     */
+    public function testgeo() : Response
+    {
+        $sql = "SELECT ST_X(latlong) AS lat, ST_Y(latlong) AS lng, created_at FROM \"Locations\"";
+
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $this->json($result);
+    }
+
+    /**
      * @Route("/api/v1/getimage/{id}.png", name="getimage", methods={"GET", "HEAD"})
      *
      * @param Request $request
@@ -58,7 +74,7 @@ class ApiController extends AbstractController
     }
 
     /**
-     * @Route("/api/v1/get/{id}", name="getloc", methods={"GET", "HEAD"})
+     * @Route("/api/v1/get/location/{id}", name="getloc", methods={"GET", "HEAD"})
      *
      * @param int $id The id of the location to get
      *

@@ -30,7 +30,7 @@
 
         {% if locations|default(null) %}
             {% for loc in locations %}
-                var marker = L.marker([{{ loc.lat }}, {{ loc.long }}]).addTo(map);
+                var marker = L.marker([{{ loc.lat }}, {{ loc.lng }}]).addTo(map);
 
                 marker.bindPopup("<b>Pranešimo data:</b> <br>{{ loc.created_at|split(".")[0] }}");
             {% endfor %}

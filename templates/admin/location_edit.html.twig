@@ -6,25 +6,104 @@
 
 {% block body %}
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div id="map" style="height: 50vh;"></div>
+    <script type="text/javascript">
+        var map = new L.Map('map');
+
+        var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            osmAttrib = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">2022 OpenStreetMap contributors</a>',
+            osm = new L.TileLayer(osmUrl, {maxZoom: 19, attribution: osmAttrib});
+
+        var geocodeService = L.esri.Geocoding.geocodeService({
+            apikey: "AAPKfa869c04abca4be7b67082007f71bd03dIOoH9wMrdc1IacMrk1yAWkHTNv9euC84dgU3abrG8E4VDxQdBnz8r_ZN7j8c8Zu"
+        });
+
+        map.setView(new L.LatLng({{ location.lat }}, {{ location.lng }}), 13).addLayer(osm);
+
+        var popup = L.popup();
+
+        geocodeService.reverse().latlng(new L.LatLng({{ location.lat }}, {{ location.lng }})).run((error, result) =>
+        {
+            if (error) return;
+
+            document.getElementById("address").value = result.address.LongLabel;
+        });
+
+        function onMapClick(e)
+        {
+            geocodeService.reverse().latlng(e.latlng).run((error, result) =>
+            {
+                if (error) return;
+
+                popup.setLatLng(e.latlng)
+                    .setContent("<b>Pasirinkote adresą:</b> <br> " + result.address.LongLabel)
+                    .openOn(map);
+
+                document.getElementById("address").value = result.address.LongLabel;
+            });
+
+            document.getElementById("lat").value = e.latlng.lat;
+            document.getElementById("lng").value = e.latlng.lng;
+        }
+
+        var marker = L.marker([{{ location.lat }}, {{ location.lng }}]).addTo(map);
+
+        marker.bindPopup("<b>Pranešimo data:</b> <br>{{ location.created_at|split(".")[0] }}");
+
+        function onMarkerClick(e)
+        {
+            document.getElementById("lat").value = e.latlng.lat;
+            document.getElementById("lng").value = e.latlng.lng;
+
+            geocodeService.reverse().latlng(e.latlng).run((error, result) =>
+            {
+                if (error) return;
+
+                document.getElementById("address").value = result.address.LongLabel;
+            });
+        }
+
+        marker.on('click', onMarkerClick);
+
+        map.on('click', onMapClick);
+
+        L.Control.geocoder().addTo(map);
+    </script>
+
     <div class="card">
         <div class="card-body">
             <form method="post" action="/admin/edit/location/submit" enctype="multipart/form-data">
                 <div class="form-control-sm">
-                    <label for="id">ID</label>
-                    <input disabled type="text" class="form-control" name="id" id="id" value="{{ location.location_id }}">
+                    <label for="id_visible">ID</label>
+                    <input disabled type="text" class="form-control" name="id_visible" id="id_visible" value="{{ location.location_id }}">
                 </div>
+
+                <input type="hidden" class="form-control" name="id" id="id" value="{{ location.location_id }}">
+
                 <div class="form-control-sm">
-                    <label for="lat">Ilguma</label>
+                    <label for="address" style="font-weight: bold">Ilguma</label>
+                    <p>Lokaciją galima įrašyti ranka arba spausti ant vietos žemėlapyje.</p>
                     <input type="text" class="form-control" name="lat" id="lat" value="{{ location.lat }}">
                 </div>
+
                 <div class="form-control-sm">
-                    <label for="long">Platuma</label>
-                    <input type="text" class="form-control" name="long" id="long" value="{{ location.long }}">
+                    <label for="address" style="font-weight: bold">Platuma</label>
+                    <p>Lokaciją galima įrašyti ranka arba spausti ant vietos žemėlapyje.</p>
+                    <input type="text" class="form-control" name="lng" id="lng" value="{{ location.lng }}">
                 </div>
+
                 <div class="form-control-sm">
-                    <label for="email">Pranešėjo el. paštas</label>
+                    <label for="address" style="font-weight: bold">El. paštas</label>
+                    <p>Pranešėjo el. paštas, naudojamas susisiekimo tikslams.</p>
                     <input type="text" class="form-control" name="email" id="email" value="{{ location.email }}">
                 </div>
+
+                <div class="form-control-sm disabled">
+                    <label for="address" style="font-weight: bold">Adresas</label>
+                    <p>Nurodykite adresą spausdami ant žemėlapio.</p>
+                    <input type="text" class="form-control" disabled name="address" id="address">
+                </div>
+
                 <div class="form-control-sm">
                     <label for="created_at">Sukurta</label>
                     <input type="text" class="form-control" name="created_at" id="created_at" value="{{ location.created_at }}">

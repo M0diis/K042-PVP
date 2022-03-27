@@ -22,25 +22,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
-    <script>
-
-        let reverse = async (lat, long) => {
-            var geocodeService = L.esri.Geocoding.geocodeService({
-                apikey: "AAPKfa869c04abca4be7b67082007f71bd03dIOoH9wMrdc1IacMrk1yAWkHTNv9euC84dgU3abrG8E4VDxQdBnz8r_ZN7j8c8Zu"
-            });
-
-            var latLng = L.latLng(lat, long);
-
-            geocodeService.reverse().latlng(latLng).run(async (error, result) =>
-            {
-                if (error) return;
-
-                return await result;
-            });
-        }
-    </script>
-
-
     {% block navigation %}
         <nav class="navbar navbar-expand-lg navbar-dark bg-black justify-content-center">
             <div class="text-center">

@@ -61,7 +61,7 @@
                                         apikey: "{{ geocode_api_key }}"
                                     });
 
-                                    var latLng = L.latLng({{ job.lat }}, {{ job.long }});
+                                    var latLng = L.latLng({{ job.lat }}, {{ job.lng }});
 
                                     var address;
 
@@ -77,7 +77,7 @@
                                 </script>
 
                                 <td>
-                                    <a class="small-text" href="/map/pan/{{ job.lat }}/{{ job.long }}" target="_blank">
+                                    <a class="small-text" href="/map/pan/{{ job.lat }}/{{ job.lng }}" target="_blank">
                                         Peržiūrėti žemėlapyje
                                 </td>
 

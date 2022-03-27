@@ -26,12 +26,10 @@ class MapController extends AbstractController
     public function previewPanTo(Request $request): Response
     {
         $lat = $request->attributes->get('lat');
-        $long = $request->attributes->get('long');
-
-        $locations = $this->pdo->query("SELECT latlong[0] as lat, latlong[1] as long, created_at FROM \"Locations\"")->fetchAll();
+        $long = $request->attributes->get('lng');
 
         return $this->render('map/index.html.twig', [
-            'locations' => $locations,
+            'locations' =>  $this->getLocations(),
             'lat' => $lat,
             'long' => $long
         ]);
@@ -43,10 +41,13 @@ class MapController extends AbstractController
      */
     public function index(): Response
     {
-        $locations = $this->pdo->query("SELECT latlong[0] as lat, latlong[1] as long, created_at FROM \"Locations\"")->fetchAll();
-
         return $this->render('map/index.html.twig', [
-            'locations' => $locations,
+            'locations' => $this->getLocations(),
         ]);
+    }
+
+    private function getLocations(): array
+    {
+        return $this->pdo->query("SELECT location_id, ST_X(latlong) AS lat, ST_Y(latlong) AS lng, created_at FROM \"Locations\"")->fetchAll();
     }
 }

@@ -18,32 +18,17 @@
     <!-- Load Esri Leaflet Geocoder from CDN -->
     <script src="https://unpkg.com/esri-leaflet-geocoder@3.0.0/dist/esri-leaflet-geocoder.js"></script>
 
-    <script>
-
-        let reverse = async (lat, long) => {
-            var geocodeService = L.esri.Geocoding.geocodeService({
-                apikey: "AAPKfa869c04abca4be7b67082007f71bd03dIOoH9wMrdc1IacMrk1yAWkHTNv9euC84dgU3abrG8E4VDxQdBnz8r_ZN7j8c8Zu"
-            });
-
-            var latLng = L.latLng(lat, long);
-
-            geocodeService.reverse().latlng(latLng).run(async (error, result) =>
-            {
-                if (error) return;
-
-                return await result;
-            });
-        }
-    </script>
-
+    <!-- Load Leaflet Control Geocoder -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
     {% block navigation %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-black" style="padding-left: 37%;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black justify-content-center">
             <div class="text-center">
-                <a class="navbar-brand text-light font-weight-bold" href="{{ path('main') }}">ROADCHECK ඞ</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                {#                <a class="navbar-brand text-light font-weight-bold" href="{{ path('main') }}">ROADCHECK ඞ</a>#}
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                        aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon "></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">

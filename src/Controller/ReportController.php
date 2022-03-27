@@ -37,7 +37,7 @@ class ReportController extends AbstractController
     {
         $email = $request->request->get('email');
         $lat = $request->request->get('lat');
-        $long = $request->request->get('long');
+        $long = $request->request->get('lng');
 
         if(empty($_FILES['image_file']['name']))
         {
