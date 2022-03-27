@@ -27,9 +27,17 @@ class ApiController extends AbstractController
     }
 
     /**
-     * @Route("/api/v1/getall", name="get_all")
+     * @Route("/api/v1/test", name="test", methods={"GET", "HEAD"})
      */
-    public function testgeo() : Response
+    public function testAPI(): Response
+    {
+        return new Response('API is working.', 200);
+    }
+
+    /**
+     * @Route("/api/v1/location/all", name="get_all")
+     */
+    public function getAllLocations(): Response
     {
         $sql = "SELECT ST_X(latlong) AS lat, ST_Y(latlong) AS lng, created_at FROM \"Locations\"";
 
@@ -61,7 +69,7 @@ class ApiController extends AbstractController
 
         if (!$base64)
         {
-            return new Response('', Response::HTTP_NOT_FOUND);
+            return new Response(json_encode(['error' => 'Image not found']), 404);
         }
 
         $image = base64_decode($base64);
@@ -90,11 +98,12 @@ class ApiController extends AbstractController
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($result) {
+        if ($result)
+        {
             return new Response(json_encode($result), 200);
-        } else {
-            return new Response(json_encode(['error' => 'Location not found']), 404);
         }
+
+        return new Response(json_encode(['error' => 'Location not found']), 404);
     }
 
     /**
@@ -126,7 +135,7 @@ class ApiController extends AbstractController
             return new Response(400);
         }
 
-        $stmt = $this->pdo->prepare("INSERT INTO \"Locations\"(latlong) VALUES (POINT(:lat, :lng))");
+        $stmt = $this->pdo->prepare("INSERT INTO \"Locations\"(latlong, email, status) VALUES (ST_POINT(:lat, :lng, 4326), null, 'Laukia patvirtinimo')");
 
         $stmt->bindParam(':lat', $lat);
         $stmt->bindParam(':lng', $lng);

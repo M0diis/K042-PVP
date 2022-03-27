@@ -83,12 +83,11 @@ class ReportController extends AbstractController
         $image_id = $this->pdo->query($image_id)->fetchColumn();
 
         $stmt = $this->pdo->prepare(
-            "INSERT INTO \"Locations\" (image_id, latlong, email, status) 
-                    VALUES (:image_id, Point(:lat, :long), :email, 'Laukia patvirtinimo')");
+            "INSERT INTO \"Locations\" (image_id, latlong, email, status)  VALUES (:image_id, ST_POINT(:lat, :lng, 4326), :email, 'Laukia patvirtinimo')");
 
         $stmt->bindParam(':image_id', $image_id);
         $stmt->bindParam(':lat', $lat);
-        $stmt->bindParam(':long', $long);
+        $stmt->bindParam(':lng', $long);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
 

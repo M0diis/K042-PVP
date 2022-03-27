@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="Code cleanup. Reduce code repetitions.">
+    <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="Change API routes. Add README.md">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MapController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/jobs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/jobs.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/locations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/locations.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base_admin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_admin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/map/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/map/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/report/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/report/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,9 +156,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="ts.external.directory.path" value="F:\Program Files\PhpStorm 2020.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -170,6 +168,7 @@
       <recent name="C:\xampp\htdocs\pothole\pothole-detection\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\pothole\pothole-detection\public\assets\iconlayers" />
       <recent name="C:\xampp\htdocs\pothole\pothole-detection\public\assets" />
       <recent name="C:\xampp\htdocs\pothole\pothole-detection\assets\leaflet" />
       <recent name="C:\xampp\htdocs\pothole\pothole-detection" />
@@ -197,7 +196,9 @@
       <workItem from="1648332413487" duration="1179000" />
       <workItem from="1648334052459" duration="5748000" />
       <workItem from="1648341366515" duration="708000" />
-      <workItem from="1648384835643" duration="12908000" />
+      <workItem from="1648384835643" duration="13390000" />
+      <workItem from="1648400803033" duration="85000" />
+      <workItem from="1648400945125" duration="10391000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1645745441901</created>
@@ -346,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648399175346</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="More code cleanup.">
+      <created>1648400187204</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1648400187204</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,6 +376,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Initial pages" />
     <MESSAGE value="Minor changes with variables in renders." />
@@ -388,6 +399,8 @@
     <MESSAGE value="Center admin navbar. Remove         &quot;symfony/webpack-encore-pack&quot;: &quot;^1.0&quot;," />
     <MESSAGE value="Add requirement checker." />
     <MESSAGE value="Code cleanup. Reduce code repetitions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Code cleanup. Reduce code repetitions." />
+    <MESSAGE value="More code cleanup." />
+    <MESSAGE value="Change API routes. Add README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change API routes. Add README.md" />
   </component>
 </project>
