@@ -78,7 +78,9 @@ class ReportController extends AbstractController
 
         $this->pdo->query($query);
 
-        $image_id = $this->pdo->lastInsertId();
+        $image_id = 'SELECT image_id FROM "Images" ORDER BY image_id DESC LIMIT 1;';
+
+        $image_id = $this->pdo->query($image_id)->fetchColumn();
 
         $stmt = $this->pdo->prepare(
             "INSERT INTO \"Locations\" (image_id, latlong, email, status) 

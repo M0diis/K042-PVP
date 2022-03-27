@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="Add titles to pages.">
+    <list default="true" id="01fc252f-28e4-4188-aa69-831f98a9996c" name="Changes" comment="Add some lithuanian routes for pages. Add footer information. Fix navbar alignment.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AboutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AboutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MapController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/about/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +189,8 @@
       <workItem from="1648118578463" duration="40701000" />
       <workItem from="1648200759829" duration="3417000" />
       <workItem from="1648332413487" duration="1179000" />
-      <workItem from="1648334052459" duration="5285000" />
+      <workItem from="1648334052459" duration="5748000" />
+      <workItem from="1648341366515" duration="679000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1645745441901</created>
@@ -301,7 +297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648337690181</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Add some lithuanian routes for pages. Add footer information. Fix navbar alignment.">
+      <created>1648340495643</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1648340495643</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +340,7 @@
     <MESSAGE value="About page. Display work information, editing. Display locations, editing. Reverse geocoding. Admin panel, nav bar." />
     <MESSAGE value="Update base map popups. Check for empty file and fix input checking in reports. Add map selection in reports." />
     <MESSAGE value="Add titles to pages." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add titles to pages." />
+    <MESSAGE value="Add some lithuanian routes for pages. Add footer information. Fix navbar alignment." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add some lithuanian routes for pages. Add footer information. Fix navbar alignment." />
   </component>
 </project>
